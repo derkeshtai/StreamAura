@@ -44,6 +44,9 @@ dependencies:
   share_plus: ^7.2.1
   intl: ^0.18.1
 
+  # Ads
+  google_mobile_ads: ^4.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

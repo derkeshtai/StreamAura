@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/app_state.dart';
 import '../models/models.dart';
+import '../widgets/ad_banner_widget.dart';
 import 'player_screen.dart';
 import 'momentos_screen.dart';
 import 'favoritos_screen.dart';
+import 'admin/admin_login_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -80,6 +82,16 @@ class _ExploreTab extends StatelessWidget {
               },
               tooltip: 'Abrir reproductor',
             ),
+            IconButton(
+              icon: const Icon(Icons.admin_panel_settings),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const AdminLoginScreen()),
+                );
+              },
+              tooltip: 'Admin',
+            ),
           ],
         ),
         body: const TabBarView(
@@ -117,19 +129,31 @@ class _WebcamsTab extends StatelessWidget {
           );
         }
 
-        return GridView.builder(
-          padding: const EdgeInsets.all(16),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 16 / 10,
-            crossAxisSpacing: 12,
-            mainAxisSpacing: 12,
-          ),
-          itemCount: state.webcams.length,
-          itemBuilder: (context, index) {
-            final webcam = state.webcams[index];
-            return _WebcamCard(webcam: webcam);
-          },
+        return Column(
+          children: [
+            // Ad banner at top
+            const AdBannerWidget(placement: AdPlacement.homeTop),
+
+            Expanded(
+              child: GridView.builder(
+                padding: const EdgeInsets.all(16),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 16 / 10,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                ),
+                itemCount: state.webcams.length,
+                itemBuilder: (context, index) {
+                  final webcam = state.webcams[index];
+                  return _WebcamCard(webcam: webcam);
+                },
+              ),
+            ),
+
+            // Ad banner at bottom
+            const AdBannerWidget(placement: AdPlacement.homeBottom),
+          ],
         );
       },
     );
@@ -238,13 +262,28 @@ class _AudioTab extends StatelessWidget {
           );
         }
 
-        return ListView.builder(
-          padding: const EdgeInsets.all(16),
-          itemCount: state.stations.length,
-          itemBuilder: (context, index) {
-            final station = state.stations[index];
-            return _StationTile(station: station);
-          },
+        return Column(
+          children: [
+            const AdBannerWidget(placement: AdPlacement.homeTop),
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: state.stations.length,
+                itemBuilder: (context, index) {
+                  final station = state.stations[index];
+                  // Show ad every 5 items
+                  return Column(
+                    children: [
+                      _StationTile(station: station),
+                      if ((index + 1) % 5 == 0)
+                        const AdBannerWidget(placement: AdPlacement.betweenContent),
+                    ],
+                  );
+                },
+              ),
+            ),
+            const AdBannerWidget(placement: AdPlacement.homeBottom),
+          ],
         );
       },
     );
