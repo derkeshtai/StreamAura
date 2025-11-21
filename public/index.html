@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamAura - Momentos Compartidos</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      color: #fff;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 0;
+    }
+    h1 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    .tagline {
+      color: #a0a0a0;
+      font-size: 1.2rem;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    .feature-card h3 {
+      color: #00d2ff;
+      margin-bottom: 1rem;
+    }
+    .coming-soon {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem;
+      background: rgba(0,210,255,0.1);
+      border-radius: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>StreamAura</h1>
+      <p class="tagline">Webcams del mundo + Radio + Momentos compartidos</p>
+    </header>
+
+    <div class="features">
+      <div class="feature-card">
+        <h3>📹 Webcams en Vivo</h3>
+        <p>Explora cámaras de todo el mundo: ciudades, naturaleza, volcanes, auroras boreales y más.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🎵 Radio & Sonidos</h3>
+        <p>Sintoniza estaciones de radio, música ambiental, ruido blanco o sonidos para relajarte.</p>
+      </div>
+      <div class="feature-card">
+        <h3>💬 Frases Inspiradoras</h3>
+        <p>Superpone frases motivacionales, de superación o consolación sobre tus vistas favoritas.</p>
+      </div>
+      <div class="feature-card">
+        <h3>✨ Momentos Compartidos</h3>
+        <p>Captura y comparte esos instantes mágicos donde la vista y el audio crean algo especial.</p>
+      </div>
+    </div>
+
+    <div class="coming-soon">
+      <h2>🚀 Próximamente</h2>
+      <p>Estamos preparando algo increíble. ¡Mantente atento!</p>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    // TODO: Reemplaza con tu configuración de Firebase
+    // import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js';
+    // const firebaseConfig = {
+    //   apiKey: "tu-api-key",
+    //   authDomain: "tu-proyecto.firebaseapp.com",
+    //   projectId: "tu-proyecto",
+    //   storageBucket: "tu-proyecto.appspot.com",
+    //   messagingSenderId: "123456789",
+    //   appId: "tu-app-id"
+    // };
+    // const app = initializeApp(firebaseConfig);
+  </script>
+</body>
+</html>
